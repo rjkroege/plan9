@@ -1,0 +1,9 @@
+config
+install.log
+install.sum
+src/cmd/awk/y.output
+src/cmd/devdraw/o.devdraw
+src/cmd/rc/x.tab.h
+*.o
+o.*
+.DS_Store
