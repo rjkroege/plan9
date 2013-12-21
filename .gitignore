@@ -7,3 +7,4 @@ src/cmd/rc/x.tab.h
 *.o
 o.*
 .DS_Store
+bin/*
