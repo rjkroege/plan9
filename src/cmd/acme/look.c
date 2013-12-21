@@ -376,7 +376,7 @@ search(Text *ct, Rune *r, uint n)
 int
 isfilec(Rune r)
 {
-	static Rune Lx[] = { '.', '-', '+', '/', ':', 0 };
+	static Rune Lx[] = { '.', '-', '+', '/', ':', ' ', 0 };
 	if(isalnum(r))
 		return TRUE;
 	if(runestrchr(Lx, r))
@@ -391,6 +391,7 @@ cleanrname(Runestr rs)
 	char *s;
 	int nb, nulls;
 
+	runetr(rs.r, rs.nr, replacespace, ' ');
 	s = runetobyte(rs.r, rs.nr);
 	cleanname(s);
 	cvttorunes(s, strlen(s), rs.r, &nb, &rs.nr, &nulls);
@@ -601,6 +602,7 @@ expandfile(Text *t, uint q0, uint q1, Expand *e)
 		nname = rs.nr;
 	}
 	e->bname = runetobyte(r, nname);
+	runetr(r, nname, ' ', replacespace);
 	/* if it's already a window name, it's a file */
 	w = lookfile(r, nname);
 	if(w != nil)
